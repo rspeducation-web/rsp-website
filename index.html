@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSP Education | Educational Consultancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a5f3e 0%, #2d8659 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #86efac;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #16a34a;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #16a34a;
+            text-align: center;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #f8f9fa;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #22c55e;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-box {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .contact-box h3 {
+            color: #16a34a;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: #22c55e;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #16a34a;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a5f3e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100" height="100" fill="#6b9d3a"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="white" stroke-width="6"/>
+                </svg>
+                <span>RSP Education</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#services">Why Choose Us</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Let Us Help You Get Into University!</h1>
+        <p>No Qualifications? No Problem. Explore our fully-funded courses and get expert guidance on your university journey.</p>
+        <a href="#contact" class="cta-button">Book A Call</a>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" style="padding: 4rem 2rem; background: white;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Our Courses</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Explore our wide range of fully-funded university courses</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Business & Management</h3>
+                    <p>Business Management, Business Administration, Entrepreneurship, International Business, Marketing Management</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Accounting & Finance</h3>
+                    <p>Accounting, Finance, Financial Management, Banking & Finance, Accounting & Business</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Computing & IT</h3>
+                    <p>Computer Science, Information Technology, Software Engineering, Cyber Security, Data Science</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Health & Social Care</h3>
+                    <p>Health & Social Care, Healthcare Management, Public Health, Social Work, Nursing Studies</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Construction & Engineering</h3>
+                    <p>Construction Management, Civil Engineering, Building Services Engineering, Quantity Surveying</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Project Management</h3>
+                    <p>Project Management, Programme Management, Operations Management, Strategic Management</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Law & Criminology</h3>
+                    <p>Law, Business Law, Criminology, Criminal Justice, Legal Studies</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Education & Teaching</h3>
+                    <p>Education Studies, Early Years Education, Special Educational Needs, Teacher Training</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>Psychology</h3>
+                    <p>Psychology, Applied Psychology, Child Psychology, Counselling Psychology</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Creative Arts & Media</h3>
+                    <p>Media Studies, Digital Marketing, Graphic Design, Creative Writing, Film Production</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍽️</div>
+                    <h3>Hospitality & Tourism</h3>
+                    <p>Hospitality Management, Tourism Management, Events Management, Hotel Management</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h3>Social Sciences</h3>
+                    <p>Sociology, Politics, International Relations, Human Geography, Economics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section style="padding: 4rem 2rem; background: white;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose RSP Education?</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3>Range of Universities</h3>
+                    <p>Through our direct partnerships with universities across the UK, you have access to a wide range of courses from Business to Healthcare - we cover it all!</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Comprehensive Services</h3>
+                    <p>From application assistance to guidance on Student Finance England, we provide end-to-end services to make your education journey seamless.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✍️</div>
+                    <h3>Interview Prep</h3>
+                    <p>We understand how daunting interviews can be which is why we go above and beyond to make sure you are confident and prepared.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Student-Centered Approach</h3>
+                    <p>We support you all the way through your education journey from start to finish. Seeing our students succeed is what drives us.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💯</div>
+                    <h3>100% Free</h3>
+                    <p>We don't charge you a penny for our service. It doesn't matter what help you need, big or small, we are there for you.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Career Growth</h3>
+                    <p>Thinking of changing careers or learning new skills? We confidently guide you to the best course for your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities Available Section -->
+    <section style="padding: 4rem 2rem; background: #f8f9fa;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 3rem;">Cities We Serve</h2>
+            <div class="services-grid">
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>London</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Birmingham</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Manchester</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Leeds</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Leicester</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Nottingham</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Newcastle</h3>
+                </div>
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📍</div>
+                    <h3>Bradford</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2>What Our Students Say!</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">⭐⭐⭐⭐⭐<br><br>Thank you to RSP Education for helping me get enrolled into university. They helped me prepare for the interview really well and gave me all the confidence. Will definitely recommend to my friends for a smooth process. Thank you again for making my university dream come true.</p>
+                <p class="testimonial-author">— Sarah M.</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">⭐⭐⭐⭐⭐<br><br>I had the easiest experience while applying for my course. Special thanks to the team for taking care of everything and for guiding me through the interview which helped me pass and gave me confidence. I cannot thank them enough for the smooth process and fast service.</p>
+                <p class="testimonial-author">— Ahmed K.</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">⭐⭐⭐⭐⭐<br><br>I was anxious about the process but RSP Education provided me full support and guidance through the whole application process which I could never have done alone. Through their support I aced the interview and am looking forward to starting my Business course. Would definitely recommend!</p>
+                <p class="testimonial-author">— James T.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About RSP Education</h2>
+        <div class="about-content">
+            <p>RSP Education was created with one clear mission: to break down the barriers that prevent talented individuals from accessing higher education. We believe that everyone deserves the opportunity to pursue their academic goals, regardless of their background or previous qualifications.</p>
+            <br>
+            <p>What sets us apart is our commitment to providing genuinely free support throughout your entire university journey. From your first inquiry to enrollment day, we're with you every step of the way. Our team has built strong relationships with universities across the UK, allowing us to offer insider knowledge and expert guidance that makes the application process straightforward and stress-free.</p>
+            <br>
+            <p>We specialize in helping students navigate the often-confusing world of Student Finance England. Our expertise ensures you understand exactly what funding you're entitled to and how to access it. Whether you're a school leaver, career changer, or returning to education after time away, we tailor our support to your unique situation.</p>
+            <br>
+            <p style="text-align: center; font-size: 1.3rem; font-weight: bold; color: #16a34a;">Ready to start your university journey with RSP Education?</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">Contact us to discuss how we can help!</p>
+        <div class="contact-info">
+            <div class="contact-box">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:info@rspeducation.co.uk" style="color: #16a34a; text-decoration: none;">info@rspeducation.co.uk</a></p>
+            </div>
+            <div class="contact-box">
+                <h3>📱 Phone</h3>
+                <p><a href="tel:+447404947887" style="color: #16a34a; text-decoration: none;">07404 947887</a></p>
+            </div>
+            <div class="contact-box">
+                <h3>📍 Location</h3>
+                <p>Birmingham, UK<br>Serving students nationwide</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Get In Touch</h3>
+            <form action="mailto:info@rspeducation.co.uk" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">First Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name *</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">SUBMIT</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 RSP Education. All rights reserved.</p>
+        <p style="margin-top: 0.5rem;">Supporting students across the UK in achieving their educational goals</p>
+    </footer>
+</body>
+</html>
